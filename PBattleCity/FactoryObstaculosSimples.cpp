@@ -1,0 +1,1 @@
+#include "FactoryObstaculosSimples.h"
