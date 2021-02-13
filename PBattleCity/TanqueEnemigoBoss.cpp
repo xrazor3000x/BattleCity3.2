@@ -1,51 +1,26 @@
-#include "TanqueEnemigo.h"
+#include "TanqueEnemigoBoss.h"
 #include "TanqueJugador.h"
 #include "Utilitarios.h"
 #include "Pared.h"
 #include "Bala.h"
 #include "TanqueJugador.h"
-#include "GameManager.h"
-
-
-TanqueEnemigo::TanqueEnemigo()
+TanqueEnemigoBoss::TanqueEnemigoBoss() {
+    tipoActor = TipoActor_FinelCountdown;
+   /* tipoEnemigo = TipoEnemigo_Final;*/
+    energia = energiaEnemigo + 10;
+    velocidad = velocidadEnemigo + 1;
+    analizarTiempo = tiempoAnalisisIAEnemiga;
+    analizarTemporizador = getRandomFloat(0.0, analizarTiempo);
+    ultimoAnalisisX = 0.0;
+    ultimoAnalisisY = 0.0;
+    setImagen(ColorConsola_Negro, ColorConsola_GrisOscuro);
+}
+TanqueEnemigoBoss::~TanqueEnemigoBoss()
 {
-	tipoActor = TipoActor_TanqueEnemigo;
-	analizarTiempo = tiempoAnalisisIAEnemiga;
-	analizarTemporizador = getRandomFloat(0.0, analizarTiempo);
-	ultimoAnalisisX = 0.0;
-	ultimoAnalisisY = 0.0;
 
-	energia = energiaEnemigo;
-	velocidad = velocidadEnemigo;
-
-	//tanqueJugador = _tanqueJugador;
-
-	setImagen(ColorConsola_CelesteOscuro, ColorConsola_Negro);
 }
 
-
-//TanqueEnemigo::TanqueEnemigo(Actor* _tanqueJugador)
-//{
-//	tipoActor = TipoActor_TanqueEnemigo;
-//	analizarTiempo = tiempoAnalisisIAEnemiga;
-//	analizarTemporizador = getRandomFloat(0.0, analizarTiempo);
-//	ultimoAnalisisX = 0.0;
-//	ultimoAnalisisY = 0.0;
-//
-//	energia = energiaEnemigo;
-//	velocidad = velocidadEnemigo;
-//
-//	tanqueJugador = _tanqueJugador;
-//	
-//	setImagen(ColorConsola_CelesteOscuro, ColorConsola_Negro);
-//}
-
-TanqueEnemigo::~TanqueEnemigo()
-{
-	
-}
-
-void TanqueEnemigo::analizar(Actor* _tanqueJugador)
+void TanqueEnemigoBoss::analizar(Actor* _tanqueJugador)
 {
 	float x = 0.0;
 	float y = 0.0;
@@ -55,10 +30,10 @@ void TanqueEnemigo::analizar(Actor* _tanqueJugador)
 	float yDelta = 0.0;
 
 	switch (direccion) {
-		case Direccion_Izquierda: xDelta = -1.0; break;
-		case Direccion_Derecha: xDelta = 1.0; break;
-		case Direccion_Arriba: yDelta = -1.0; break;
-		case Direccion_Abajo: yDelta = 1.0; break;
+	case Direccion_Izquierda: xDelta = -1.0; break;
+	case Direccion_Derecha: xDelta = 1.0; break;
+	case Direccion_Arriba: yDelta = -1.0; break;
+	case Direccion_Abajo: yDelta = 1.0; break;
 	}
 
 	//Encontrar actores cercanos y distancia
@@ -80,7 +55,7 @@ void TanqueEnemigo::analizar(Actor* _tanqueJugador)
 		}
 		return;
 	}
-	
+
 	//Atacar disparando
 	if (actor->getTipoActor() == TipoActor_TanqueJugador || actor->getTipoActor() == TipoActor_Base) {
 		disparar();
@@ -118,7 +93,7 @@ void TanqueEnemigo::analizar(Actor* _tanqueJugador)
 }
 
 
-void TanqueEnemigo::moverDireccionRandom()
+void TanqueEnemigoBoss::moverDireccionRandom()
 {
 	Direccion direccionAnterior = getDireccion();
 	Direccion direccionNueva;
@@ -132,7 +107,7 @@ void TanqueEnemigo::moverDireccionRandom()
 }
 
 
-void TanqueEnemigo::moverDireccionIA(Actor* _tanqueJugador){
+void TanqueEnemigoBoss::moverDireccionIA(Actor* _tanqueJugador) {
 	Direccion direccionAnterior = getDireccion();
 	Direccion direccionNueva;
 
@@ -160,7 +135,7 @@ void TanqueEnemigo::moverDireccionIA(Actor* _tanqueJugador){
 	mover(direccionNueva);
 }
 
-void TanqueEnemigo::actualizar(float _dt)
+void TanqueEnemigoBoss::actualizar(float _dt)
 {
 	Tanque::actualizar(_dt);
 

@@ -152,6 +152,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GeneradorEnemigo.cpp" />
     <ClCompile Include="GeneradorEnemigoF.cpp" />
+    <ClCompile Include="GenerarBoss.cpp" />
     <ClCompile Include="Granada.cpp" />
     <ClCompile Include="Menu\Menu.cpp" />
     <ClCompile Include="Misil.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Tanque.cpp" />
     <ClCompile Include="TanqueEFactory.cpp" />
     <ClCompile Include="TanqueEnemigo.cpp" />
+    <ClCompile Include="TanqueEnemigoBoss.cpp" />
     <ClCompile Include="TanqueEnemigoF.cpp" />
     <ClCompile Include="TanqueJugador.cpp" />
     <ClCompile Include="Tractor.cpp" />
@@ -185,6 +187,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GeneradorEnemigo.h" />
     <ClInclude Include="GeneradorEnemigoF.h" />
+    <ClInclude Include="GenerarBoss.h" />
     <ClInclude Include="Granada.h" />
     <ClInclude Include="Menu\Menu.h" />
     <ClInclude Include="Misil.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="Tanque.h" />
     <ClInclude Include="TanqueEFactory.h" />
     <ClInclude Include="TanqueEnemigo.h" />
+    <ClInclude Include="TanqueEnemigoBoss.h" />
     <ClInclude Include="TanqueEnemigoF.h" />
     <ClInclude Include="TanqueJugador.h" />
     <ClInclude Include="TipoActor.h" />

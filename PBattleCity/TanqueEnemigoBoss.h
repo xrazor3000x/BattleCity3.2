@@ -2,7 +2,7 @@
 #include "TanqueEnemigo.h"
 #include "Utilitarios.h"
 #include "TipoEnemigo.h"
-class TanqueEnemigoF :
+class TanqueEnemigoBoss :
     public Tanque
 {
 private:
@@ -14,18 +14,17 @@ protected:
     float ultimoAnalisisX;
     float ultimoAnalisisY;
 
-    void analizar(Actor* _tanqueJugador)/*override*/ /*{ TanqueEnemigo::analizar(_tanqueJugador); }*/;
-    void moverDireccionRandom()/*override*/ /*{ TanqueEnemigo::moverDireccionRandom(); }*/;
+    void analizar(Actor* _tanqueJugador)/*override*//* { TanqueEnemigo::analizar(_tanqueJugador); }*/;
+    void moverDireccionRandom()/*override*//* { TanqueEnemigo::moverDireccionRandom(); }*/;
     void moverDireccionIA(Actor* _tanqueJugador)/*override*/ /*{ TanqueEnemigo::moverDireccionIA(_tanqueJugador); }*/;
 
 public:
-    TanqueEnemigoF();
-    ~TanqueEnemigoF();
+    TanqueEnemigoBoss();
+    ~TanqueEnemigoBoss();
     void actualizar(float _dt)/*override *//*{ TanqueEnemigo::actualizar(_dt); }*/;
- /*   TanqueEnemigo* clone()override
+   /* TanqueEnemigo* clone()override
     {
-        return new TanqueEnemigoF; 
+        return new TanqueEnemigoBoss;
     }*/
-
 };
 

@@ -18,22 +18,16 @@
 //	return new TanqueEnemigoF->clone();
 //}
 
-TanqueEFactory::TanqueEFactory()
-{
-	tf = new  TanqueEnemigoF();
-	//tfi = new  TanqueEnemigoBoss();
-}
-//TanqueEnemigo* TanqueEFactory::CrearTanqueEnemigo(TipoEnemigo _tipoEnemigo)
+//TanqueEFactory::TanqueEFactory()
 //{
-//	if (_tipoEnemigo == TipoEnemigo_Fuerte) {
-//		return tf->clone();
-//	else if (_tipoEnemigo == TipoEnemigo_Final) {
-//	}
-//
-//	else
-//		return NULL;
+//	tf = new  TanqueEnemigoF();
+//	tfb = new  TanqueEnemigoBoss();
 //}
-TanqueEnemigo* TanqueEFactory::CrearTanqueEF(){
-
-	return tf->clone();
-}
+//TanqueEnemigo* TanqueEFactory::CrearTanqueEB()
+//{
+//	return tfb->clone();
+//}
+//TanqueEnemigo* TanqueEFactory::CrearTanqueEF(){
+//
+//	return tf->clone();
+//}

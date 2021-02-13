@@ -27,8 +27,9 @@ class GameManager
 {
 public:
 	list<Actor*> lActores;
-	int nivel = 1;
+	int nivel = 0;
 	int puntos;
+	int puntaje;
 	bool bonus;
 	/*int teclaMenu = 0;*/
 
@@ -71,12 +72,14 @@ public:
 	//Actor* crearActor(TipoActor _tipoActor, TipoObstaculo = TipoObstaculo_None, float _x, float _y);
 
 	Actor* getJugador1() { return jugador1; }
+	Actor* getJugador2() { return jugador2; }
 
 	void destruirActor(Actor* _actor);
 	Actor* detectarColisiones(float _x, float _y, float _ancho, float _alto, Actor* _actorExcluido);
 	bool moverActorA(Actor* _actor, float _x, float _y);
 	int getConteoActores(TipoActor _tipoActor);
 	int getConteoEnemigosMuertos() { return contadorEnemigosMuertos; }
+	int getEleccion() { return eleccion; }
 	int incrementarContadorEnemigosMuertos();
 	bool Elegirjp2(bool a);
 	int puntuacion();

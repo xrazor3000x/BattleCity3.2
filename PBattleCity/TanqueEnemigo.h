@@ -9,7 +9,7 @@ class TanqueEnemigo :
     public Tanque
 {
 private:
-    //Actor* tanqueJugador;
+    Actor* tanqueJugador;
 protected:
     float analizarTemporizador;
     float analizarTiempo;

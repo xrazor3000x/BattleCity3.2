@@ -21,6 +21,7 @@
 #include "TanqueDestructor.h"
 
 #include "GeneradorEnemigoF.h"
+#include "GenerarBoss.h"
 #define ARRIBA 87
 #define ABAJO 83
 #define IZQUIERDA 65
@@ -39,16 +40,18 @@ GameManager* GameManager::getInstancia()
 
 	return instancia;
 }
-int GameManager::puntuacion() {
+int GameManager::puntuacion()
+{
 	
-	puntos = contadorEnemigosMuertos * 100;
+	puntos = puntaje * 100;
 	return puntos;
 }
 void GameManager::Bonus() {
 
 	puntos * 2;
 }
-bool GameManager::Elegirjp2(bool a) {
+bool GameManager::Elegirjp2(bool a)
+{
 	eleccion = a;
 	return eleccion;
 }
@@ -170,9 +173,12 @@ void GameManager::renderizar()
 	}
 
 	//Mostrar el numero de enemigos eliminados y las posicion dende fueron destruidos
-	sistemaRenderizacion.dibujarTexto(17, 100, "Posicion", ColorConsola_Azul, ColorConsola_Amarillo);
+	sistemaRenderizacion.dibujarTexto(17, 100, "Puntaje", ColorConsola_Azul, ColorConsola_Amarillo);
 	h = datosEnemigosMuertos.size();
-	sistemaRenderizacion.dibujarTexto(18, 100, to_string(h), ColorConsola_GrisOscuro, ColorConsola_Amarillo);
+	puntaje = h;
+	sistemaRenderizacion.dibujarTexto(19, 100, to_string(h), ColorConsola_GrisOscuro, ColorConsola_Amarillo);
+	puntuacion();
+	sistemaRenderizacion.dibujarTexto(18, 100, to_string(puntos), ColorConsola_Negro, ColorConsola_Rojo);
 	sc = 100;
 	sf = 19;
 	c = 0;
@@ -181,8 +187,8 @@ void GameManager::renderizar()
 	string texto = "";
 	while (h > 0)
 	{
-		texto = to_string(datosEnemigosMuertos[f].numeroEnemigo) + ":[" +
-			to_string(datosEnemigosMuertos[f].x) + to_string(datosEnemigosMuertos[f].y) + "]/n";
+		/*texto = to_string(datosEnemigosMuertos[f].numeroEnemigo) + ":[" +
+			to_string(datosEnemigosMuertos[f].x) + to_string(datosEnemigosMuertos[f].y) + "]/n";*/
 		sistemaRenderizacion.dibujarTexto(sf + f, sc + c, texto, ColorConsola_Celeste, ColorConsola_CelesteOscuro);
 		--h;
 		++f;
@@ -203,14 +209,25 @@ void GameManager::actualizar(float _dt)
 	list<Actor*>::iterator iLActoresAux;
 	while (iLActores != lActores.end()) {
 		(*iLActores)->actualizar(_dt);
-		if ((*iLActores)->getEnergia() <= 0 && (*iLActores)->getDestruirDespuesMuerte()) {
-			if ((*iLActores)->getTipoActor() == TipoActor_TanqueEnemigo) {
+		if ((*iLActores)->getEnergia() <= 0 && (*iLActores)->getDestruirDespuesMuerte())
+		{
+			if ((*iLActores)->getTipoActor() == TipoActor_TanqueEnemigo)
+			{
 				datosEnemigosMuertos.push_back(DatosEnemigoMuerto{ (*iLActores)->getNumeroActor(), (*iLActores)->getTipoActor(), (*iLActores)->getX(), (*iLActores)->getY() });
 				contadorEnemigosMuertos++;
+				
 			}
-			if ((*iLActores)->getTipoActor() == TipoActor_TanqueEF) {
+			if ((*iLActores)->getTipoActor() == TipoActor_TanqueEF) 
+			{
 				datosEnemigosMuertos.push_back(DatosEnemigoMuerto{ (*iLActores)->getNumeroActor(), (*iLActores)->getTipoActor(), (*iLActores)->getX(), (*iLActores)->getY() });
 				contadorEnemigosMuertos++;
+				puntaje + 2;
+			}
+			if ((*iLActores)->getTipoActor() == TipoActor_FinelCountdown) 
+			{
+				datosEnemigosMuertos.push_back(DatosEnemigoMuerto{ (*iLActores)->getNumeroActor(), (*iLActores)->getTipoActor(), (*iLActores)->getX(), (*iLActores)->getY() });
+				contadorEnemigosMuertos++;
+				puntaje + 10;
 			}
 			iLActoresAux = iLActores;
 			iLActoresAux++;
@@ -261,10 +278,11 @@ void GameManager::actualizar(float _dt)
 		configurarSistema();
 		inicializar(datosNivel0);
 	}
-
+	
 	// Todos los enemigos destruidos
-	if (contadorEnemigosMuertos == enemigosPorNivel) {
-
+	if (contadorEnemigosMuertos == enemigosPorNivel) 
+	{
+		nivel++;
 		/*inicializar();*/
 	/*system("cls");*/
 		configurarSistema();
@@ -277,22 +295,30 @@ void GameManager::actualizar(float _dt)
 				abandonarJuego();*/
 		switch (nivel) {
 		case 1: {
+		/*	jugador1->setEnergia(energiaJugador);
+			jugador2->setEnergia(energiaJugador);
+			base->setEnergia(energiaBase);*/
+			jugador1->cargarEnergia(energiaJugador);
 			PlaySound(NULL, 0, 0);
 			PlaySound(TEXT("Musica\\Sabaton_Night_Witches_8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
 			inicializar(datosNivel1);
 			while (bucle());
 			abandonarJuego();
 			break;
-			nivel++;
+			/*nivel++;*/
 		}
 		case 2: {
+			
+		/*	jugador1->setEnergia(energiaJugador);
+			jugador2->setEnergia(energiaJugador);
+			base->setEnergia(energiaBase);*/
 			PlaySound(NULL, 0, 0);
 			PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
 			inicializar(datosNivel2);
 			while (bucle());
 			abandonarJuego();
 			break;
-			nivel++;
+			/*nivel++;*/
 		}
 		}
 		
@@ -327,6 +353,7 @@ Actor* GameManager::crearObstaculo(TipoObstaculo _tipoObstaculo, float _x, float
 void GameManager::inicializar(const unsigned char nivel[][111])
 {
 	abandonarJuego();
+	sistemaRenderizacion.limpiar();
 	contadorEnemigosMuertos = 0;
 
 	for (int f = 0; f < filasNivel; f++) {
@@ -413,6 +440,13 @@ void GameManager::inicializar(const unsigned char nivel[][111])
 			crearActor<GeneradorEnemigoF>(c, f);
 				break;
 			}
+			case celdaSimbolo_Final:
+			{/*ParedLadrillo* paredLadrillo = (ParedLadrillo*)crearObstaculo(TipoObstaculo_ParedLadrillo, c, f);*/
+				//Aqui se crea un actor generador de enemigos.
+
+				crearActor<GenerarBoss>(c, f);
+				break;
+			}
 			}
 		}
 	}
@@ -434,6 +468,9 @@ bool GameManager::bucle()
 void GameManager::abandonarJuego()
 {
 	lActores.clear();
+	/*system("cls");*/
+	//sistemaRenderizacion.limpiar();
+	
 }
 
 //Actor* GameManager::crearActor(TipoActor _tipoActor, TipoObstaculo _tipoObstaculo, float _x, float _y)

@@ -35,12 +35,12 @@ void GeneradorEnemigoF::actualizar(float _dt/*, TanqueEFactory _tanqueEFa*/) {
 
 		if (enemigosDeReserva > 0 && enemigosEnElNivel < enemigosFuertesPorNivelMomento) {
 			//gameManager->crearActor(TipoActor_TanqueEnemigo, getX(), getY());
-			TanqueEFactory* factory = new TanqueEFactory;
-			/*factory = NULL;*/
-			TanqueEnemigo* TanqueF = factory->CrearTanqueEF();
-			/*TanqueEnemigoF* tanqueEnemigoF*/TanqueF= gameManager->crearActor<TanqueEnemigoF>(getX(), getY());
-			/*crearEnemigo();*/
+			//TanqueEFactory* factory = new TanqueEFactory;
+			///*factory = NULL;*/
+			//TanqueEnemigo* TanqueF = factory->CrearTanqueEF();
+			//TanqueF= gameManager->crearActor<TanqueEnemigoF>(getX(), getY());
 			
+			TanqueEnemigoF* tanqueEnemigof = gameManager->crearActor<TanqueEnemigoF>(getX(), getY());
 
 		}
 	}
