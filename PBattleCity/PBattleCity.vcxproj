@@ -170,7 +170,6 @@
     <ClCompile Include="TanqueEnemigoBoss.cpp" />
     <ClCompile Include="TanqueEnemigoF.cpp" />
     <ClCompile Include="TanqueJugador.cpp" />
-    <ClCompile Include="Terminar.cpp" />
     <ClCompile Include="Tractor.cpp" />
     <ClCompile Include="Tronco.cpp" />
     <ClCompile Include="Utilitarios.cpp" />
@@ -210,7 +209,6 @@
     <ClInclude Include="TanqueEnemigoBoss.h" />
     <ClInclude Include="TanqueEnemigoF.h" />
     <ClInclude Include="TanqueJugador.h" />
-    <ClInclude Include="Terminar.h" />
     <ClInclude Include="TipoActor.h" />
     <ClInclude Include="TipoEnemigo.h" />
     <ClInclude Include="TipoObstaculo.h" />

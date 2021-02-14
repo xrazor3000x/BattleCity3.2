@@ -22,6 +22,8 @@
 
 #include "GeneradorEnemigoF.h"
 #include "GenerarBoss.h"
+
+#include "Snapshot.h"
 #define ARRIBA 87
 #define ABAJO 83
 #define IZQUIERDA 65
@@ -59,6 +61,7 @@ GameManager::GameManager()
 {
 	juegoActivo = true;
 	relojUltimoFrame = 0;
+	bossMuerto = false;
 	puntos = 1;
 	base = 0;
 	jugador1 = 0;
@@ -226,7 +229,7 @@ void GameManager::actualizar(float _dt)
 			if ((*iLActores)->getTipoActor() == TipoActor_FinelCountdown) 
 			{
 				datosEnemigosMuertos.push_back(DatosEnemigoMuerto{ (*iLActores)->getNumeroActor(), (*iLActores)->getTipoActor(), (*iLActores)->getX(), (*iLActores)->getY() });
-				contadorEnemigosMuertos++;
+				bossMuerto = true;
 				puntaje + 10;
 			}
 			iLActoresAux = iLActores;
@@ -321,14 +324,16 @@ void GameManager::actualizar(float _dt)
 				break;
 				/*nivel++;*/
 			}
-			case 3: {
-				system("cls");
-				PlaySound(NULL, 0, 0);
-				PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
-				GameOver(false);
-			}
 		}
-		
+	}
+	if (bossMuerto) {
+		system("cls");
+		PlaySound(NULL, 0, 0);
+		PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
+		GameOver(false);
+		Snapshot snapshot;
+		snapshot.restaurar();
+		cout << snapshot.mostrar();
 	}
 }
 

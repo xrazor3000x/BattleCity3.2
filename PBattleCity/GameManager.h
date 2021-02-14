@@ -37,6 +37,7 @@ private:
 	bool juegoActivo;
 	clock_t relojUltimoFrame;
 	SistemaRenderizacion sistemaRenderizacion;
+	bool bossMuerto;
 
 	//Actor* actores[numeroMaximoActores];
 	vector<Actor*> vActores;

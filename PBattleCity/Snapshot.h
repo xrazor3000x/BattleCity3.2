@@ -15,6 +15,9 @@ public:
 	{
 		puntos = gamemanager.puntuacion(); 
 	}
+	int mostrar() {
+		return puntos;
+	}
 	
 };
 
