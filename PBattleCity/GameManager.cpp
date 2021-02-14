@@ -293,33 +293,40 @@ void GameManager::actualizar(float _dt)
 				inicializar(datosNivel1);
 				while (bucle());
 				abandonarJuego();*/
-		switch (nivel) {
-		case 1: {
-		/*	jugador1->setEnergia(energiaJugador);
-			jugador2->setEnergia(energiaJugador);
-			base->setEnergia(energiaBase);*/
-			jugador1->cargarEnergia(energiaJugador);
-			PlaySound(NULL, 0, 0);
-			PlaySound(TEXT("Musica\\Sabaton_Night_Witches_8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
-			inicializar(datosNivel1);
-			while (bucle());
-			abandonarJuego();
-			break;
-			/*nivel++;*/
-		}
-		case 2: {
+		switch (nivel) 
+		{
+			case 1: {
+			/*	jugador1->setEnergia(energiaJugador);
+				jugador2->setEnergia(energiaJugador);
+				base->setEnergia(energiaBase);*/
+				jugador1->cargarEnergia(energiaJugador);
+				PlaySound(NULL, 0, 0);
+				PlaySound(TEXT("Musica\\Sabaton_Night_Witches_8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
+				inicializar(datosNivel1);
+				while (bucle());
+				abandonarJuego();
+				break;
+				/*nivel++;*/
+			}
+			case 2: {
 			
-		/*	jugador1->setEnergia(energiaJugador);
-			jugador2->setEnergia(energiaJugador);
-			base->setEnergia(energiaBase);*/
-			PlaySound(NULL, 0, 0);
-			PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
-			inicializar(datosNivel2);
-			while (bucle());
-			abandonarJuego();
-			break;
-			/*nivel++;*/
-		}
+			/*	jugador1->setEnergia(energiaJugador);
+				jugador2->setEnergia(energiaJugador);
+				base->setEnergia(energiaBase);*/
+				PlaySound(NULL, 0, 0);
+				PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
+				inicializar(datosNivel2);
+				while (bucle());
+				abandonarJuego();
+				break;
+				/*nivel++;*/
+			}
+			case 3: {
+				system("cls");
+				PlaySound(NULL, 0, 0);
+				PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
+				GameOver(false);
+			}
 		}
 		
 	}

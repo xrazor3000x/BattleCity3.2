@@ -163,12 +163,14 @@
     <ClCompile Include="ParedMetal.cpp" />
     <ClCompile Include="Roca.cpp" />
     <ClCompile Include="SistemaRenderizacion.cpp" />
+    <ClCompile Include="Snapshot.cpp" />
     <ClCompile Include="Tanque.cpp" />
     <ClCompile Include="TanqueEFactory.cpp" />
     <ClCompile Include="TanqueEnemigo.cpp" />
     <ClCompile Include="TanqueEnemigoBoss.cpp" />
     <ClCompile Include="TanqueEnemigoF.cpp" />
     <ClCompile Include="TanqueJugador.cpp" />
+    <ClCompile Include="Terminar.cpp" />
     <ClCompile Include="Tractor.cpp" />
     <ClCompile Include="Tronco.cpp" />
     <ClCompile Include="Utilitarios.cpp" />
@@ -201,12 +203,14 @@
     <ClInclude Include="ParedMetal.h" />
     <ClInclude Include="Roca.h" />
     <ClInclude Include="SistemaRenderizacion.h" />
+    <ClInclude Include="Snapshot.h" />
     <ClInclude Include="Tanque.h" />
     <ClInclude Include="TanqueEFactory.h" />
     <ClInclude Include="TanqueEnemigo.h" />
     <ClInclude Include="TanqueEnemigoBoss.h" />
     <ClInclude Include="TanqueEnemigoF.h" />
     <ClInclude Include="TanqueJugador.h" />
+    <ClInclude Include="Terminar.h" />
     <ClInclude Include="TipoActor.h" />
     <ClInclude Include="TipoEnemigo.h" />
     <ClInclude Include="TipoObstaculo.h" />
@@ -215,6 +219,7 @@
     <ClInclude Include="Utilitarios.h" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="Musica\8 bit Sabaton  The Final Solution.wav" />
     <Media Include="Musica\8_bit_Sabaton_Ghost_Division_menu.wav" />
     <Media Include="Musica\Explosion.wav" />
     <Media Include="Musica\Laser_Shoot.wav" />

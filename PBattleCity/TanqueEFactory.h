@@ -2,6 +2,10 @@
 #include "TanqueEnemigo.h"
 #include "TanqueEnemigoF.h"
 #include "TanqueEnemigoBoss.h"
+enum Type {
+    PROTOTYPE_1 = NULL,
+    PROTOTYPE_2
+};
 class TanqueEFactory :
     public TanqueEnemigo
 {
@@ -15,6 +19,6 @@ public:
     TanqueEnemigo* CrearTanqueEF();
     TanqueEnemigo* tfb;
     TanqueEnemigo* CrearTanqueEB();
-
+    void cliente(TanqueEFactory& prototype_factory);
 };
 

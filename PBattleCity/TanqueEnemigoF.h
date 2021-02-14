@@ -3,7 +3,7 @@
 #include "Utilitarios.h"
 #include "TipoEnemigo.h"
 class TanqueEnemigoF :
-    public Tanque
+    public TanqueEnemigo
 {
 private:
     Actor* tanqueJugador;
@@ -19,13 +19,13 @@ protected:
     void moverDireccionIA(Actor* _tanqueJugador)/*override*/ /*{ TanqueEnemigo::moverDireccionIA(_tanqueJugador); }*/;
 
 public:
-    TanqueEnemigoF();
+    TanqueEnemigoF() ;
     ~TanqueEnemigoF();
     void actualizar(float _dt)/*override *//*{ TanqueEnemigo::actualizar(_dt); }*/;
- /*   TanqueEnemigo* clone()override
+    TanqueEnemigo* clone()/*const*/ override 
     {
         return new TanqueEnemigoF; 
-    }*/
+    }
 
 };
 

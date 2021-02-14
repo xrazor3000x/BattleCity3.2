@@ -3,7 +3,7 @@
 #include "Utilitarios.h"
 #include "TipoEnemigo.h"
 class TanqueEnemigoBoss :
-    public Tanque
+    public TanqueEnemigo
 {
 private:
     Actor* tanqueJugador;
@@ -22,9 +22,9 @@ public:
     TanqueEnemigoBoss();
     ~TanqueEnemigoBoss();
     void actualizar(float _dt)/*override *//*{ TanqueEnemigo::actualizar(_dt); }*/;
-   /* TanqueEnemigo* clone()override
+    TanqueEnemigo* clone()/*const */override
     {
         return new TanqueEnemigoBoss;
-    }*/
+    }
 };
 

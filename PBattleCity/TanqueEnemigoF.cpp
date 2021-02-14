@@ -4,7 +4,7 @@
 #include "Pared.h"
 #include "Bala.h"
 #include "TanqueJugador.h"
-TanqueEnemigoF::TanqueEnemigoF()
+TanqueEnemigoF::TanqueEnemigoF():TanqueEnemigo()
 {
     tipoActor = TipoActor_TanqueEF;
     /*tipoEnemigo = TipoEnemigo_Fuerte;*/

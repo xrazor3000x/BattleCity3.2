@@ -1,13 +1,13 @@
 #include "TanqueEFactory.h"
 
 
-
+//
 //void TanqueEFactory::inicializar()
 //{
 //	
-//	//final = new TanqueEnemigoF();
+//	final = new TanqueEnemigoF();
 //}
-
+//
 //TanqueEnemigo* TanqueEFactory::getFinal()
 //{
 //	return final->clone();
@@ -18,16 +18,19 @@
 //	return new TanqueEnemigoF->clone();
 //}
 
-//TanqueEFactory::TanqueEFactory()
-//{
-//	tf = new  TanqueEnemigoF();
-//	tfb = new  TanqueEnemigoBoss();
-//}
-//TanqueEnemigo* TanqueEFactory::CrearTanqueEB()
-//{
-//	return tfb->clone();
-//}
-//TanqueEnemigo* TanqueEFactory::CrearTanqueEF(){
-//
-//	return tf->clone();
+TanqueEFactory::TanqueEFactory()
+{
+	tf = new  TanqueEnemigoF();
+	tfb = new  TanqueEnemigoBoss();
+}
+TanqueEnemigo* TanqueEFactory::CrearTanqueEB()
+{
+	return tfb->clone();
+}
+TanqueEnemigo* TanqueEFactory::CrearTanqueEF(){
+
+	return tf->clone();
+}
+//void cliente(TanqueEFactory& prototype_factory) {
+//	TanqueEFactory* prototype = prototype_factory.CrearTanqueEF();
 //}

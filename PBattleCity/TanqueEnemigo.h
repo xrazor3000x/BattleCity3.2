@@ -31,8 +31,8 @@ public:
     ~TanqueEnemigo();
     virtual void actualizar(float _dt);
 
-    virtual TanqueEnemigo* clone()/*const = 0*/ { return NULL; };
-   /* Tanque* clone()
+    virtual TanqueEnemigo* clone()/*const = NULL*/ { return NULL; };
+ /*   Tanque* clone()
     {
         return new TanqueEnemigo();
     }*/

@@ -111,6 +111,12 @@
     <ClCompile Include="GenerarBoss.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Snapshot.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Terminar.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tanque.h">
@@ -230,6 +236,12 @@
     <ClInclude Include="GenerarBoss.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Snapshot.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Terminar.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Musica\8_bit_Sabaton_Ghost_Division_menu.wav">
@@ -248,6 +260,9 @@
       <Filter>Archivos de recursos</Filter>
     </Media>
     <Media Include="Musica\Sabaton_Night_Witches_8bit.wav">
+      <Filter>Archivos de recursos</Filter>
+    </Media>
+    <Media Include="Musica\8 bit Sabaton  The Final Solution.wav">
       <Filter>Archivos de recursos</Filter>
     </Media>
   </ItemGroup>

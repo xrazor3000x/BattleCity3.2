@@ -143,7 +143,7 @@ int Menu::menu(const char titulo[], const char* opciones[], int n)
         for (int i = 0; i < n; ++i) {
             cursorp(45, 17 + i); cout << i + 1 << ") " << opciones[i];
         }
-        cout << ANSI_COLOR_BLUE"\n\n\n\n\n\n\n\n\n\t\t\t\t2021. USFX-Chambergo. Todos los derechos reservados                        v3.2.1";
+        cout << ANSI_COLOR_BLUE"\n\n\n\n\n\n\n\n\n\t\t\t\t2021. USFX-Chambergo. Todos los derechos reservados                        v3.2.2";
         cout << ANSI_COLOR_RESET;
         // Solo permite que se ingrese ARRIBA, ABAJO o ENTER
 
