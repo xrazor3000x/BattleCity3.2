@@ -24,6 +24,7 @@
 
 Pantano::Pantano()
 {
+	setTipoActor(TipoActor_Obstaculo);
 	tipoActor = TipoActor_Obstaculo;
 	tipoObstaculo = TipoObstaculo_Pantano;
 	direccion = Direccion_MAX;

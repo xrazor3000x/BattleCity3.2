@@ -13,6 +13,7 @@
 #include "Roca.h"
 #include "Pantano.h"
 #include "Tronco.h"
+#include "Bonus.h"
 
 #include "Base.h"
 #include "GeneradorEnemigo.h"
@@ -24,6 +25,7 @@
 #include "GenerarBoss.h"
 
 #include "Snapshot.h"
+#include "Menu/Menu.h"
 #define ARRIBA 87
 #define ABAJO 83
 #define IZQUIERDA 65
@@ -32,7 +34,7 @@
 using namespace std;
 
 GameManager* GameManager::instancia = 0;
-
+Snapshot* snapshot;
 GameManager* GameManager::getInstancia()
 {
 	if (instancia == 0)
@@ -42,16 +44,28 @@ GameManager* GameManager::getInstancia()
 
 	return instancia;
 }
+int GameManager::agregarBonus() {
+	puntos = puntos * bonus;
+	return puntos;
+
+}
 int GameManager::puntuacion()
 {
+	puntaje= datosEnemigosMuertos.size();
 	
-	puntos = puntaje * 100;
+	puntos =  puntaje*100;
+	puntaje = 0;
+	//if (bE) {
+	//	puntos=puntos * 2;
+	//}
+	/*puntos = puntos * 2;*/
+	//bE = false;
 	return puntos;
 }
-void GameManager::Bonus() {
-
-	puntos * 2;
-}
+//void GameManager::Bonus() {
+//
+//	puntos * 2;
+//}
 bool GameManager::Elegirjp2(bool a)
 {
 	eleccion = a;
@@ -66,6 +80,7 @@ GameManager::GameManager()
 	base = 0;
 	jugador1 = 0;
 	jugador2 = 0;
+	bE = false;
 
 	contadorEnemigosMuertos = 0;
 }
@@ -178,9 +193,10 @@ void GameManager::renderizar()
 	//Mostrar el numero de enemigos eliminados y las posicion dende fueron destruidos
 	sistemaRenderizacion.dibujarTexto(17, 100, "Puntaje", ColorConsola_Azul, ColorConsola_Amarillo);
 	h = datosEnemigosMuertos.size();
-	puntaje = h;
-	sistemaRenderizacion.dibujarTexto(19, 100, to_string(h), ColorConsola_GrisOscuro, ColorConsola_Amarillo);
+	/*puntaje = h*100;*/
 	puntuacion();
+	sistemaRenderizacion.dibujarTexto(19, 100, to_string(h), ColorConsola_GrisOscuro, ColorConsola_Amarillo);
+	
 	sistemaRenderizacion.dibujarTexto(18, 100, to_string(puntos), ColorConsola_Negro, ColorConsola_Rojo);
 	sc = 100;
 	sf = 19;
@@ -223,14 +239,16 @@ void GameManager::actualizar(float _dt)
 			if ((*iLActores)->getTipoActor() == TipoActor_TanqueEF) 
 			{
 				datosEnemigosMuertos.push_back(DatosEnemigoMuerto{ (*iLActores)->getNumeroActor(), (*iLActores)->getTipoActor(), (*iLActores)->getX(), (*iLActores)->getY() });
-				contadorEnemigosMuertos++;
-				puntaje + 2;
+				contadorEnemigosMuertos = contadorEnemigosMuertos + 2;
+			
 			}
 			if ((*iLActores)->getTipoActor() == TipoActor_FinelCountdown) 
 			{
 				datosEnemigosMuertos.push_back(DatosEnemigoMuerto{ (*iLActores)->getNumeroActor(), (*iLActores)->getTipoActor(), (*iLActores)->getX(), (*iLActores)->getY() });
+				contadorEnemigosMuertos++;
+				bonus=bonus+10;
 				bossMuerto = true;
-				puntaje + 10;
+				
 			}
 			iLActoresAux = iLActores;
 			iLActoresAux++;
@@ -267,6 +285,8 @@ void GameManager::actualizar(float _dt)
 		PlaySound(TEXT("Musica\\Live_for_the_Kill_Amon_Amarth_8Bit.wav"), NULL, SND_LOOP | SND_ASYNC);
 		configurarSistema();
 		inicializar(datosNivel0);
+		while (bucle());
+		abandonarJuego();
 	}
 
 	// Jugador2 destruido
@@ -280,6 +300,8 @@ void GameManager::actualizar(float _dt)
 		PlaySound(TEXT("Musica\\Live_for_the_Kill_Amon_Amarth_8Bit.wav"), NULL, SND_LOOP | SND_ASYNC);
 		configurarSistema();
 		inicializar(datosNivel0);
+		while (bucle());
+		abandonarJuego();
 	}
 	
 	// Todos los enemigos destruidos
@@ -327,13 +349,17 @@ void GameManager::actualizar(float _dt)
 		}
 	}
 	if (bossMuerto) {
-		system("cls");
-		PlaySound(NULL, 0, 0);
-		PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
-		GameOver(false);
-		Snapshot snapshot;
-		snapshot.restaurar();
-		cout << snapshot.mostrar();
+		abandonarJuego();
+		/*GameOver(false);*/
+		Menu menu;
+		menu.Terminar();
+		/*snapshot->restaurar();
+		cout << snapshot->mostrar();*/
+		puntuacion();
+		agregarBonus();
+		cout <</* "\n\t\t\t"+*/puntos;
+		bossMuerto = false;
+		
 	}
 }
 
@@ -408,6 +434,34 @@ void GameManager::inicializar(const unsigned char nivel[][111])
 				charco->setFisico(false);
 				break;
 			}
+			case celdaSimbolo_Pantano:
+			{
+				Pantano* pantano = crearActor<Pantano>(c, f);
+				pantano->setImagen(pantanoImagen, pantanoColorSimbolo, pantanoColorFondo);
+				pantano->setInvulnerable(true);
+				pantano->setFisico(false);
+				break;
+			}
+			case celdaSimbolo_Tronco:
+			{
+				Tronco* tronco = crearActor<Tronco>(c, f);
+				tronco->setImagen(troncoImagen, troncoColorSimbolo, troncoColorFondo);
+				break;
+			}
+			case celdaSimbolo_Roca:
+			{
+				Roca* roca = crearActor<Roca>(c, f);
+				roca->setImagen(rocaImagen, rocaColorSimbolo, rocaColorFondo);
+				break;
+			}
+			case celdaSimbolo_Bonus:
+			{
+				Bonus* bonus = crearActor<Bonus>(c, f);
+				bonus->setImagen(bonusImagen, bonusColorSimbolo, bonusColorFondo);
+				this->bonus_ = bonus;
+				break;
+			}
+
 
 			case celdaSimbolo_Base:
 			{
@@ -468,7 +522,7 @@ bool GameManager::bucle()
 {
 	//Calculo del tiempo delta
 	clock_t relojAhora = clock();
-	clock_t deltaReloj = relojAhora - relojUltimoFrame;
+	clock_t deltaReloj = relojAhora - relojUltimoFrame+2;
 	float deltaTiempo = float(deltaReloj) / CLOCKS_PER_SEC;
 	relojUltimoFrame = relojAhora;
 
@@ -557,23 +611,46 @@ bool GameManager::moverActorA(Actor* actor, float _x, float _y)
 {
 	int f0 = int(_y);
 	int c0 = int(_x);
-	int f1 = f0 + actor->getAlto() - 1;
-	int c1 = c0 + actor->getAncho() - 1;
+	int f1 = f0 + int(actor->getAlto()) - 1;
+	int c1 = c0 + int(actor->getAncho()) - 1;
 
 	if (f0 < 0 || c0 < 0 || f1 >= filasNivel || c1 >= columnasNivel)
 		return false;
 
-
 	bool puedeMoverACelda = false;
 
-	Actor* otroActor = detectarColisiones(_x, _y, actor->getAncho(), actor->getAlto(), actor);	
+	Actor* otroActor = detectarColisiones(_x, _y, actor->getAncho(), actor->getAlto(), actor);
 
-	if (otroActor != NULL) {
+	if (otroActor != NULL)
+	{
 		actor->intersectar(otroActor);
-	}
-	else
-		puedeMoverACelda = true;
+		if (otroActor->getTipoActor() == TipoActor_Obstaculo && ((Obstaculo*)otroActor)->getTipoObstaculo() == TipoObstaculo_Pantano) 
+		{
+			if ((((Tanque*)actor)->getTipoActor() == TipoActor_TanqueJugador) || (((Tanque*)actor)->getTipoActor() == TipoActor_TanqueEnemigo)) {
+				((Tanque*)actor)->setVelocidad(3);
+				puedeMoverACelda = true;
+			}
 
+		}
+		if (otroActor->getTipoActor() == TipoActor_Obstaculo && ((Obstaculo*)otroActor)->getTipoObstaculo() == TipoObstaculo_Bonus)
+		{
+			if ((((Tanque*)actor)->getTipoActor() == TipoActor_TanqueJugador) /*|| (((Tanque*)actor)->getTipoActor() == TipoActor_TanqueEnemigo)*/)
+			{
+				bonus++;
+				destruirActor(bonus_);
+				puedeMoverACelda = true;
+			}
+
+		}
+	}
+
+	else {
+		if ((((Tanque*)actor)->getTipoActor() == TipoActor_TanqueJugador) /*|| (((Tanque*)actor)->getTipoActor() == TipoActor_TanqueEnemigo)*/) {
+			((Tanque*)actor)->setVelocidad(velocidadJugador);
+		}
+
+		puedeMoverACelda = true;
+	}
 
 	if (puedeMoverACelda)
 	{
@@ -584,6 +661,7 @@ bool GameManager::moverActorA(Actor* actor, float _x, float _y)
 	return puedeMoverACelda;
 }
 
+
 int GameManager::getConteoActores(TipoActor _tipoActor)
 {
 	return 0;
@@ -591,7 +669,7 @@ int GameManager::getConteoActores(TipoActor _tipoActor)
 
 int GameManager::incrementarContadorEnemigosMuertos()
 {
-	return contadorEnemigosMuertos;
+	return 0;
 }
 
 //int GameManager::agregarEnemigoMuerto(DatosEnemigosMuertos _datosEnemigoMuerto)

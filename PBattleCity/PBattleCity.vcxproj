@@ -145,6 +145,7 @@
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="BattleCity.cpp" />
+    <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="Charco.cpp" />
     <ClCompile Include="FactoryObstaculos.cpp" />
     <ClCompile Include="FactoryObstaculosCompuestos.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Arbusto.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="Base.h" />
+    <ClInclude Include="Bonus.h" />
     <ClInclude Include="Charco.h" />
     <ClInclude Include="ColorConsola.h" />
     <ClInclude Include="Direccion.h" />

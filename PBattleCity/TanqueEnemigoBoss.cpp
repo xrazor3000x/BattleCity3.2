@@ -3,7 +3,6 @@
 #include "Utilitarios.h"
 #include "Pared.h"
 #include "Bala.h"
-#include "TanqueJugador.h"
 TanqueEnemigoBoss::TanqueEnemigoBoss() {
     tipoActor = TipoActor_FinelCountdown;
    /* tipoEnemigo = TipoEnemigo_Final;*/

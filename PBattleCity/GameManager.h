@@ -30,7 +30,7 @@ public:
 	int nivel = 0;
 	int puntos;
 	int puntaje;
-	bool bonus;
+	int bonus;
 	/*int teclaMenu = 0;*/
 
 private:
@@ -46,7 +46,9 @@ private:
 	Actor* base;
 	Actor* jugador1;
 	Actor* jugador2;
+	Actor* bonus_;
 	bool eleccion;
+	int bE;
 
 	int contadorEnemigosMuertos;
 	
@@ -84,7 +86,8 @@ public:
 	int incrementarContadorEnemigosMuertos();
 	bool Elegirjp2(bool a);
 	int puntuacion();
-	void Bonus();
+	int agregarBonus();
+	//void Bonus();
 	//int agregarEnemigoMuerto(DatosEnemigosMuertos _datosEnemigoMuerto);
 	
 	Actor* crearObstaculo(TipoObstaculo _tipoObstaculo, float _x, float _y);

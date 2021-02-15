@@ -21,12 +21,12 @@
 TanqueEFactory::TanqueEFactory()
 {
 	tf = new  TanqueEnemigoF();
-	tfb = new  TanqueEnemigoBoss();
+	//tfb = new  TanqueEnemigoBoss();
 }
-TanqueEnemigo* TanqueEFactory::CrearTanqueEB()
-{
-	return tfb->clone();
-}
+//TanqueEnemigo* TanqueEFactory::CrearTanqueEB()
+//{
+//	return tfb->clone();
+//}
 TanqueEnemigo* TanqueEFactory::CrearTanqueEF(){
 
 	return tf->clone();

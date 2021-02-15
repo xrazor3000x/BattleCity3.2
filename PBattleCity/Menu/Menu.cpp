@@ -1,6 +1,6 @@
 #include "Menu.h"
 #include "..\GameManager.h"
-
+#include "..\Snapshot.h"
 Menu::Menu()
 {
 }
@@ -89,7 +89,7 @@ void Menu::jugador1()
 
 
     gameManager->configurarSistema();
-    gameManager->inicializar(datosNivel0);
+    gameManager->inicializar(datosNivel2);
 
     while (gameManager->bucle());
     gameManager->abandonarJuego();
@@ -143,7 +143,9 @@ int Menu::menu(const char titulo[], const char* opciones[], int n)
         for (int i = 0; i < n; ++i) {
             cursorp(45, 17 + i); cout << i + 1 << ") " << opciones[i];
         }
-        cout << ANSI_COLOR_BLUE"\n\n\n\n\n\n\n\n\n\t\t\t\t2021. USFX-Chambergo. Todos los derechos reservados                        v3.2.3";
+       /* snapshot->restaurar();
+        cout << ANSI_COLOR_BLUE + snapshot->mostrar();;*/
+        cout << ANSI_COLOR_BLUE"\n\n\n\n\n\n\n\n\n\t\t\t\t2021. USFX-Chambergo. Todos los derechos reservados                        v3.2.4";
         cout << ANSI_COLOR_RESET;
         // Solo permite que se ingrese ARRIBA, ABAJO o ENTER
 
@@ -182,3 +184,38 @@ int Menu::menu(const char titulo[], const char* opciones[], int n)
 
     return opcionSeleccionada;
 }
+void Menu::Terminar() {
+
+
+    int tecla;
+
+         bool repite = true; // controla el bucle para regresar a la rutina que lo llamo, al presionar ENTER
+    PlaySound(NULL, 0, 0);
+    PlaySound(TEXT("Musica\\Rhapsody Emerald Sword 8bit.wav"), NULL, SND_LOOP | SND_ASYNC);
+        system("cls");
+
+        /*system("color 1e");*/
+        // Imprime el título del menú
+        cursorp(15, 2);
+        cout << ANSI_COLOR_RED"\n\t\t  ::::::::      :::     ::::    ::::  ::::::::::  ::::::::  :::     ::: :::::::::: :::::::::";
+        cout << ANSI_COLOR_RED"\n\t\t :+:    :+:   :+: :+:   +:+:+: :+:+:+ :+:        :+:    :+: :+:     :+: :+:        :+:    :+: ";
+        cout << ANSI_COLOR_RED"\n\t\t +:+         +:+   +:+  +:+ +:+:+ +:+ +:+        +:+    +:+ +:+     +:+ +:+        +:+    +:+ ";
+        cout << ANSI_COLOR_RED"\n\t\t :#:        +#++:++#++: +#+  +:+  +#+ +#++:++#   +#+    +:+ +#+     +:+ +#++:++#   +#++:++#:   ";
+        cout << ANSI_COLOR_RED"\n\t\t +#+   +#+# +#+     +#+ +#+       +#+ +#+        +#+    +#+  +#+   +#+  +#+        +#+    +#+";
+        cout << ANSI_COLOR_RED"\n\t\t #+#    #+# #+#     #+# #+#       #+# #+#        #+#    #+#   #+#+#+#   #+#        #+#    #+#  ";
+        cout << ANSI_COLOR_RED"\n\t\t  ########  ###     ### ###       ### ##########  ########      ###     ########## ###    ### ";
+        cout << ANSI_COLOR_RESET;
+
+        cout << ANSI_COLOR_RESET;
+
+
+}
+           
+           
+ 
+ 
+
+
+ 
+
+

@@ -13,7 +13,7 @@ const unsigned char datosNivel1[filasNivel][columnasNivel + 1] =
 	"@                           ###                 &&                 ###                             @         @",
 	"@     ###      &&&&&        ###                 &&                 ###        &&&&&      ###       @         @",
 	"@     CCC       &&&         @@@&&&&&& S   ###CCCCCCCC### S   &&&&&&@@@         &&&       CCC       @         @",
-	"@     CCC       &&&         @@@&&&&&&     ###CCCCCCCC###     &&&&&&@@@         &&&       CCC       @         @",
+	"@     CCC       &&&         @@@&&&&&&     ###CCC~ CCC###     &&&&&&@@@         &&&       CCC       @         @",
 	"@     CCC       &&&                       ###CCCCCCCC###                       &&&       CCC       @         @",
 	"@     ###       &&&                       @@@########@@@                       &&&       ###       @         @",
 	"@     @@@                                                                                @@@       @         @",

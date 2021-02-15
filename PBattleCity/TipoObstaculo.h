@@ -8,5 +8,6 @@ enum TipoObstaculo {
     TipoObstaculo_ParedLadrillo,
     TipoObstaculo_ParedMetal,
     TipoObstaculo_Roca,
-    TipoObstaculo_Tronco
+    TipoObstaculo_Tronco,
+    TipoObstaculo_Bonus
 };

@@ -18,9 +18,9 @@ void GenerarBoss::actualizar(float _dt/*, TanqueEFactory _tanqueEFa*/) {
 		generarTemporizador = 0.0f;
 
 		int enemigosEnElNivel = gameManager->getConteoActores(TipoActor_FinelCountdown);
-		int enemigosDeReserva = enemigosBossPorNivel - (enemigosEnElNivel-5) - gameManager->getConteoEnemigosMuertos();
+		int enemigosDeReserva = enemigosBossPorNivel - enemigosEnElNivel - gameManager->getConteoEnemigosMuertos();
 
-		if (enemigosDeReserva > 0 && (enemigosEnElNivel - 5) < enemigosBossPorNivelMomento) {
+		if (enemigosDeReserva > 0 && enemigosEnElNivel < enemigosBossPorNivelMomento) {
 			//gameManager->crearActor(TipoActor_TanqueEnemigo, getX(), getY());
 			//TanqueEFactory* factory = new TanqueEFactory;
 			///*factory = NULL;*/

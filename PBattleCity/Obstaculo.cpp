@@ -5,6 +5,7 @@
 #include "ParedMetal.h"
 #include "Roca.h"
 #include "Tronco.h"
+#include "Bonus.h"
 #include "TipoObstaculo.h"
 
 Obstaculo::Obstaculo()
@@ -58,6 +59,9 @@ Obstaculo* Obstaculo::getObstaculo(TipoObstaculo _tipoObstaculo)
 	}
 	else if (_tipoObstaculo == TipoObstaculo_Tronco) {
 		return new Tronco();
+	}
+	else if (_tipoObstaculo == TipoObstaculo_Bonus) {
+		return new Bonus();
 	}
 	else{
 		return NULL;

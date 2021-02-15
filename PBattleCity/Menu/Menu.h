@@ -35,6 +35,7 @@ public:
 	void menu_principal(LPCWSTR sound1, LPCWSTR sound2, LPCWSTR sound3);
 	void jugador1();
 	void jugador2();
+	void Terminar();
 
 };
 

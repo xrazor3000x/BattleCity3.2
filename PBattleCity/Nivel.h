@@ -15,6 +15,7 @@ const unsigned char	celdaSimbolo_ParedMetal = '@';
 //const unsigned char celdaSimbolo_Arbusto = '&';
 const unsigned char	celdaSimbolo_Base = 'B';
 const unsigned char	celdaSimbolo_GeneradorEnemigo = 'S';
+const unsigned char celdaSimbolo_Bonus = '~';
 
 
 
@@ -25,7 +26,7 @@ const unsigned char datosNivel0[filasNivel][columnasNivel + 1] =
 	"@                           ###                 @@                 ###                             @         @",
 	"@                           ###                 @@                 ###                             @         @",
 	"@      ###        ##   ##   @@@###### S   @@@        @@@ S   ######@@@   ##   ##         ###       @         @",
-	"@      ###        #######   @@@######     @@@        @@@     ######@@@   #######         ###       @         @",
+	"@      ###        #######   @@@######     @@@    ~   @@@     ######@@@   #######         ###       @         @",
 	"@      ###        #######                 @@@        @@@                 #######         ###       @         @",
 	"@      ###        ##   ##                 @@@@@@@@@@@@@@                 ##   ##         ###       @         @",
 	"@      @@@                                      @@                                       @@@       @         @",
@@ -47,7 +48,7 @@ const unsigned char datosNivel0[filasNivel][columnasNivel + 1] =
 	"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
 };
 
-//Paredes
+//Paredes y Bonus
 const unsigned char	paredLadrilloSimbolo = 177;
 const ColorConsola paredLadrilloColorSimbolo = ColorConsola_Cafe;
 const ColorConsola paredLadrilloColorFondo = ColorConsola_Rojo;
@@ -56,6 +57,9 @@ const unsigned char	paredMetalSimbolo = 254;
 const ColorConsola paredMetalColorSimbolo = ColorConsola_Gris;
 const ColorConsola paredMetalColorFondo = ColorConsola_GrisOscuro;
 
+const unsigned char	bonusImagen = 126;
+const ColorConsola bonusColorSimbolo = ColorConsola_Rojo;
+const ColorConsola bonusColorFondo = ColorConsola_Celeste;
 // Tanques
 const float fuegoTiempoEnfriamientoTanque = 0.5;
 const int tamanoTanque = 3;
