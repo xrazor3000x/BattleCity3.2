@@ -34,7 +34,7 @@
 using namespace std;
 
 GameManager* GameManager::instancia = 0;
-Snapshot* snapshot;
+
 GameManager* GameManager::getInstancia()
 {
 	if (instancia == 0)
@@ -353,6 +353,7 @@ void GameManager::actualizar(float _dt)
 		/*GameOver(false);*/
 		Menu menu;
 		menu.Terminar();
+		/*Snapshot* snapshot = new Snapshot;*/
 		/*snapshot->restaurar();
 		cout << snapshot->mostrar();*/
 		puntuacion();

@@ -145,7 +145,7 @@ int Menu::menu(const char titulo[], const char* opciones[], int n)
         }
        /* snapshot->restaurar();
         cout << ANSI_COLOR_BLUE + snapshot->mostrar();;*/
-        cout << ANSI_COLOR_BLUE"\n\n\n\n\n\n\n\n\n\t\t\t\t2021. USFX-Chambergo. Todos los derechos reservados                        v3.2.4";
+        cout << ANSI_COLOR_BLUE"\n\n\n\n\n\n\n\n\n\t\t\t\t2021. USFX-Chambergo. Todos los derechos reservados                        v3.2.5";
         cout << ANSI_COLOR_RESET;
         // Solo permite que se ingrese ARRIBA, ABAJO o ENTER
 
